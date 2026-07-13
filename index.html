@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <title>HK Smart Vision</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
-        .menu-item { margin-bottom: 15px; }
-        .menu-name { font-weight: bold; color: #007bff; }
+        /* 짙은 보라색 배경과 빛나는 글씨 스타일 */
+        body { 
+            background-color: #2e003e; 
+            color: #fffae6; /* 양광 느낌의 밝은 크림색 */
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            padding: 40px; 
+            line-height: 1.8;
+        }
+        h1 { color: #f0e6ff; text-shadow: 0 0 10px #d4aaff; }
+        h2 { color: #d4aaff; font-weight: 300; }
+        
+        #langSelector {
+            background-color: #4b0082;
+            color: white;
+            border: 1px solid #d4aaff;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        .menu-item { margin-bottom: 20px; border-left: 3px solid #d4aaff; padding-left: 15px; }
+        .menu-name { font-weight: bold; color: #ffeb3b; text-shadow: 0 0 5px #ffeb3b; }
     </style>
 </head>
 <body>
@@ -33,7 +51,7 @@
     <div id="features" style="margin-top: 20px;"></div>
 
     <script>
-        const data = {
+        const contentData = {
             ko: {
                 title: "HK Smart Vision", subtitle: "일상을 연결하는 지능형 웨어러블 솔루션",
                 features: [
@@ -51,23 +69,22 @@
             en: {
                 title: "HK Smart Vision", subtitle: "Intelligent wearable solution connecting daily life",
                 features: [
-                    {n: "Neural Auth", d: "The safest authentication system using brainwaves or biometrics."},
-                    {n: "Sync", d: "Maintains seamless data connectivity and settings across all devices."},
-                    {n: "Payment", d: "Next-gen payment experience using only gaze and gestures."},
-                    {n: "Sentiment Analysis", d: "Real-time analysis of conversational partners for optimal communication."},
-                    {n: "Translation", d: "Communicate freely worldwide without language barriers."},
-                    {n: "Management", d: "Manage all glasses status and connected devices at a glance."},
-                    {n: "Monitoring", d: "Real-time check of device operations and security systems."},
-                    {n: "Energy Mgmt", d: "Smart battery optimization for longer usage time."},
-                    {n: "Data", d: "Provides personalized insights by learning usage patterns."}
+                    {n: "Neural Auth", d: "Safest authentication using brainwaves or biometrics."},
+                    {n: "Sync", d: "Seamless data connectivity across all devices."},
+                    {n: "Payment", d: "Next-gen payment using gaze and gestures."},
+                    {n: "Sentiment Analysis", d: "Real-time communication emotion analysis."},
+                    {n: "Translation", d: "Communicate worldwide without language barriers."},
+                    {n: "Management", d: "Manage device status at a glance."},
+                    {n: "Monitoring", d: "Real-time device and security monitoring."},
+                    {n: "Energy Mgmt", d: "Smart battery optimization for efficiency."},
+                    {n: "Data", d: "Personalized insights via usage pattern learning."}
                 ]
             }
-            // 다른 언어들도 이와 같은 형식으로 추가 가능합니다.
         };
 
         function changeLanguage() {
             const lang = document.getElementById('langSelector').value;
-            const content = data[lang] || data['en']; // 번역 데이터 없으면 영어 기본
+            const content = contentData[lang] || contentData['en'];
             document.getElementById('title').innerText = content.title;
             document.getElementById('subtitle').innerText = content.subtitle;
             
@@ -78,7 +95,6 @@
             document.getElementById('features').innerHTML = html;
         }
         
-        // 초기 로드
         changeLanguage();
     </script>
 </body>
